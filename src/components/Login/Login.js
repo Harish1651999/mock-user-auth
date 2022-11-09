@@ -3,7 +3,7 @@ import classes from "./Login.module.css";
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
 
-const Login = () => {
+const Login = (props) => {
   const [enteredemail, setEnteredEmail] = useState("");
   const [enteredpassword, setEnteredPassword] = useState("");
   const emailChangeHandler = (event) => {
@@ -16,6 +16,11 @@ const Login = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     console.log(enteredemail, enteredpassword);
+    if (enteredemail.trim().length > 1 && enteredpassword.trim().length >= 7) {
+      console.log("Logged In");
+      props.onLogin();
+      return;
+    }
   };
 
   return (
