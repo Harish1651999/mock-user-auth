@@ -35,12 +35,7 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(enteredemail, enteredpassword);
-    if (enteredemail.trim().length > 1 && enteredpassword.trim().length > 6) {
-      console.log("Logged In");
-      props.onLogin();
-      return;
-    }
+    props.onLogin(enteredemail, enteredpassword);
   };
 
   return (
