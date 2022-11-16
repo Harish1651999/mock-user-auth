@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import classes from "./Login.module.css";
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
+
+const emailReducer = (state, action) => {
+  return { value: "", isValid: false };
+};
 
 const Login = (props) => {
   const [enteredemail, setEnteredEmail] = useState("");
@@ -9,6 +13,11 @@ const Login = (props) => {
   const [enteredpassword, setEnteredPassword] = useState("");
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
+
+  const [emailState, dispatchEmail] = useReducer(emailReducer, {
+    value: "",
+    isValid: false,
+  });
 
   useEffect(() => {
     console.log("EFFECT RUNNING");
