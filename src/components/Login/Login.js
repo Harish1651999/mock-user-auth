@@ -40,12 +40,12 @@ const Login = (props) => {
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: "",
-    isValid: false,
+    isValid: null,
   });
 
   const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
     value: "",
-    isValid: false,
+    isValid: null,
   });
 
   const authCtx = useContext(AuthContext);
@@ -110,6 +110,7 @@ const Login = (props) => {
           label="E-mail"
           id="email"
           type="email"
+          isValid={emailIsValid}
           value={emailState.value}
           onChange={emailChangeHandler}
           onBlur={validateEmailHandler}
@@ -119,6 +120,7 @@ const Login = (props) => {
           label="Password"
           id="password"
           type="password"
+          isValid={passwordIsValid}
           value={passwordState.value}
           onChange={passwordChangeHandler}
           onBlur={validatePasswordHandler}
